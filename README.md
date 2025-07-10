@@ -27,7 +27,19 @@
 - **GitHub Pages** for deployment
 ---
 ## 🚀 Live Demo
-
 > 🌐[momoir demo](https://kasanjx.github.io/momoir/)
 
+---
+## 📬 Feedback
+Found a bug? Have a suggestion? Open an [Issue](https://github.com/Kasanjx/momoir/issues), [start a discussion](https://github.com/Kasanjx/momoir/discussions) or drop me a mail at [anjanamahanta19@gmail.com](anjanamahanta19@gmail.com) - I’d love to hear from you!
+
+---
+## 🌸 Credits & Inspiration
+
+- Designed & Developed by **Anjana Mahanta**  
+- Fonts: [Pacifico](https://fonts.google.com/specimen/Pacifico), [Parisienne](https://fonts.google.com/specimen/Parisienne)  
+- Deployed via [GitHub Pages](https://pages.github.com)
+---
+## 📄 License
+This project is open-sourced under the [MIT License](LICENSE).
 ---
