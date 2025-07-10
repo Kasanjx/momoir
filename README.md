@@ -31,7 +31,7 @@
 
 ---
 ## 📬 Feedback
-Found a bug? Have a suggestion? Open an [Issue](https://github.com/Kasanjx/momoir/issues), [start a discussion](https://github.com/Kasanjx/momoir/discussions) or drop me a mail at [anjanamahanta19@gmail.com](anjanamahanta19@gmail.com) - I’d love to hear from you!
+Found a bug? Have a suggestion? Open an [Issue](https://github.com/Kasanjx/momoir/issues), [start a discussion](https://github.com/Kasanjx/momoir/discussions) or drop a [mail](anjanamahanta19@gmail.com) - I’d love to hear from you!
 
 ---
 ## 🌸 Credits & Inspiration
