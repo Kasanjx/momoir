@@ -3,190 +3,258 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>momoir | Cherish</title>
+  <title>result</title>
   <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
 
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: #111;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      background: radial-gradient(circle at center, #391125 0%, #000000 80%);
-    }
-    h1 
-    {
-      font-size: 50px;
-      font-family: 'Parisienne', cursive;
-      color: #ff007f;
-      margin-bottom: 20px;
-      transition: transform 0.3s ease;
-    }
-    h1:hover{
-      transform: scale(1.1);
-      color: white;
-      text-shadow: 0 0 5px #fff,
-        0 0 20px #e6006e,
-        0 0 30px #ff007f,
-        0 0 70px #391125;
-    }
-    .editor 
-    {
-      display: flex;
-      gap: 30px;
-      align-items: flex-start;
-      justify-content: center;
-      flex-wrap: wrap;
-      width: 100%;
-      max-width: 1100px;
-    }
-    .strip-container 
-    {
-      position: relative;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px;
-      gap: 10px;
-      transition: all 0.3s ease;
-    }
-    .strip-container.horizontal {
-      flex-direction: row;
-    }
-    .strip-container img {
-      width: 240px;
-      height: 180px;
-      border-radius: 8px;
-      border: 3px solid #222;
-      cursor: pointer;
-      transition: outline 0.2s ease;
-    }
-    .strip-container img.selected {
-      outline: 4px solid #ff007f;
-    }
-    .edit-controls {
-      display: none;
-      flex-direction: column;
-      gap: 15px;
-      background: #222;
-      padding: 20px;
-      border-radius: 12px;
-      width: 250px;
-    }
-    .edit-controls.show {
-      display: flex;
-    }
-    .edit-section {
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .edit-section.show {
-      display: flex;
-    }
-    .edit-buttons {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    button {
-      padding: 10px 16px;
-      font-size: 15px;
-      background-color: #ff007f;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #e6006e;
-    }
-    .flashcard-options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 5px;
-    }
-    .flashcard {
-      padding: 6px 10px;
-      border-radius: 6px;
-      background-color: #333;
-      color: #fff;
-      font-size: 14px;
-      cursor: pointer;
-      border: 2px solid transparent;
-    }
-    .flashcard:hover {
-      border-color: #ff007f;
-    }
-    .flashcard.selected {
-      border-color: #ff007f;
-      background-color: #444;
-    }
-    .color-picker {
-      display: block;
-      margin-top: 10px;
-    }
-    .overlay-text, .sticker {
-      position: absolute;
-      cursor: move;
-      user-select: none;
-    }
-    .sticker {
-      font-size: 2rem;
-    }
-    .flashcard-options button
-    {
-      padding: 5px;
-      border-radius: 50px;
-      background-color: wheat;
-    }
-    button 
-    {
-      padding: 14px 28px;
-      font-size: 17px;
-      font-family: 'Cormorant Garamond', serif;
-      border: 1px solid #e6e5e5;
-      border-radius: 20px;
-      background-color: #be0e66;
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(255, 0, 127, 0.2);
-    }
-    button:hover
-    {
-      font-weight: 400;
-      border: 1px solid #4c0729;
-    }
-    button:focus
-    {
-      outline: 2px solid #4c0729;
-      outline-offset: 2px;
-    }
-    input[type="color"] 
-    {
-      width: 40px;
-      height: 40px;
-      padding: 0px;
-      cursor: pointer;
-      border-radius: 5px;
-      background-color: #fff;
-    }
-    select{
-      padding: 5px;
-      border-radius: 8px;
-    }
+    * {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: radial-gradient(circle at center, #391125 0%, #000000 80%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 50px;
+  font-family: 'Parisienne', cursive;
+  color: #ff007f;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+h1:hover {
+  transform: scale(1.1);
+  color: white;
+  text-shadow: 0 0 5px #fff,
+    0 0 20px #e6006e,
+    0 0 30px #ff007f,
+    0 0 70px #391125;
+}
+
+.editor {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.strip-container {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.strip-container.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.strip-container img {
+  width: 240px;
+  height: 180px;
+  border-radius: 8px;
+  border: 3px solid #222;
+  cursor: pointer;
+  transition: outline 0.2s ease;
+}
+
+.strip-container img.selected {
+  outline: 4px solid #ff007f;
+}
+
+.edit-controls {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  background: #222;
+  padding: 20px;
+  border-radius: 12px;
+  width: 250px;
+}
+
+.edit-controls.show {
+  display: flex;
+}
+
+.edit-section {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-section.show {
+  display: flex;
+}
+
+.edit-buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 14px 28px;
+  font-size: 17px;
+  font-family: 'Cormorant Garamond', serif;
+  border: 1px solid #e6e5e5;
+  border-radius: 20px;
+  background-color: #be0e66;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(255, 0, 127, 0.2);
+}
+
+button:hover {
+  font-weight: 400;
+  border: 1px solid #4c0729;
+}
+
+button:focus {
+  outline: 2px solid #4c0729;
+  outline-offset: 2px;
+}
+
+.flashcard-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.flashcard {
+  padding: 6px 10px;
+  border-radius: 6px;
+  background-color: #333;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.flashcard:hover {
+  border-color: #ff007f;
+}
+
+.flashcard.selected {
+  border-color: #ff007f;
+  background-color: #444;
+}
+
+.color-picker {
+  display: block;
+  margin-top: 10px;
+}
+
+.overlay-text,
+.sticker {
+  position: absolute;
+  cursor: move;
+  user-select: none;
+}
+
+.sticker {
+  font-size: 2rem;
+}
+
+input[type="color"] {
+  width: 40px;
+  height: 40px;
+  padding: 0px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+select {
+  padding: 5px;
+  border-radius: 8px;
+}
+
+/* Flashcard emoji buttons */
+.flashcard-options button {
+  padding: 5px;
+  border-radius: 50px;
+  background-color: wheat;
+  font-size: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 38px;
+  }
+
+  .editor {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .edit-controls {
+    width: 90%;
+  }
+
+  .strip-container {
+    max-width: 100%;
+    flex-direction: column;
+    overflow-x: auto;
+  }
+
+  .strip-container.horizontal {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+
+  .strip-container img {
+    width: 90vw;
+    height: auto;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+}
+
+.overlay-text, .sticker {
+  touch-action: none;
+}
+
+@media (max-width: 768px) {
+  .edit-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 50%;
+    overflow-y: auto;
+    border-radius: 20px 20px 0 0;
+  }
+}
 </style>
   
 </head>
@@ -252,9 +320,8 @@
     <button onclick="downloadStrip()"> download</button>
   </div>
 
-  <script>
-
-    fetch("logo.html")
+<script>
+  fetch("logo.html")
     .then(res => res.text())
     .then(data => {
       const logoWrapper = document.createElement("div");
@@ -262,147 +329,163 @@
       document.body.appendChild(logoWrapper);
     });
 
-    
-    const stripContainer = document.getElementById("stripContainer");
-    const frameOptions = document.getElementById("frameOptions");
-    const frameColorInput = document.getElementById("frameColor");
-    const editControls = document.getElementById("editControls");
-    let selectedPreText = "momoir";
-    const photos = JSON.parse(localStorage.getItem("photos")) || [
-      "https://placekitten.com/240/180",
-      "https://placekitten.com/241/180",
-      "https://placekitten.com/242/180"
-    ];
+  const stripContainer = document.getElementById("stripContainer");
+  const frameOptions = document.getElementById("frameOptions");
+  const frameColorInput = document.getElementById("frameColor");
+  const editControls = document.getElementById("editControls");
+  let selectedPreText = "momoir";
+  const photos = JSON.parse(localStorage.getItem("photos")) || [
+    "https://placekitten.com/240/180",
+    "https://placekitten.com/241/180",
+    "https://placekitten.com/242/180"
+  ];
 
-    let selectedImage = null;
-    let selectedFrameStyle = "normal";
+  let selectedImage = null;
+  let selectedFrameStyle = "normal";
 
-    photos.forEach(src => {
-      const img = document.createElement("img");
-      img.src = src;
-      img.onclick = () => selectImage(img);
-      stripContainer.appendChild(img);
-    });
-
-    function selectImage(img) {
-      document.querySelectorAll(".strip-container img").forEach(i => i.classList.remove("selected"));
-      img.classList.add("selected");
-      selectedImage = img;
-    }
-
-    const frameStyles = ["normal", "dashed", "dotted", "shadow"];
-
-    frameStyles.forEach(style => {
-      const card = document.createElement("div");
-      card.className = "flashcard";
-      card.textContent = style;
-      card.onclick = () => {
-        if (!selectedImage) return;
-        document.querySelectorAll(".flashcard").forEach(c => c.classList.remove("selected"));
-        card.classList.add("selected");
-        selectedFrameStyle = style;
-        applyFrameStyle(style);
-      };
-      frameOptions.appendChild(card);
-    });
-
-    frameColorInput.addEventListener("input", () => {
-      if (selectedImage) applyFrameStyle(selectedFrameStyle);
-    });
-
-    function applyFrameStyle(style) {
-      if (!selectedImage) return;
-      const color = frameColorInput.value;
-      selectedImage.style.boxShadow = "none";
-      selectedImage.style.border = `4px ${style === "shadow" ? "solid" : style} ${color}`;
-      if (style === "shadow") {
-        selectedImage.style.boxShadow = `0 0 15px ${color}`;
-      }
-    }
-
-    function toggleEditPanel() {
-      editControls.classList.toggle("show");
-    }
-
-    function toggleSection(id) {
-      document.querySelectorAll(".edit-section").forEach(section => {
-        section.classList.remove("show");
-      });
-      const selected = document.getElementById(id);
-      selected.classList.add("show");
-    }
-
-    function toggleLayout() {
-      stripContainer.classList.toggle("horizontal");
-    }
-
-    function changeBackground(color) {
-      stripContainer.style.backgroundColor = color;
-    }
-
-    
-document.querySelectorAll('#preTextOptions .flashcard').forEach(card => {
-  card.addEventListener('click', () => {
-    document.querySelectorAll('#preTextOptions .flashcard').forEach(c => c.classList.remove('selected'));
-    card.classList.add('selected');
-    selectedPreText = card.textContent;
+  photos.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.onclick = () => selectImage(img);
+    stripContainer.appendChild(img);
   });
-});
 
-function addText() {
-  const textColor = document.getElementById("textColor").value;
-  const fontSelect = document.getElementById("fontSelect").value;
+  function selectImage(img) {
+    document.querySelectorAll(".strip-container img").forEach(i => i.classList.remove("selected"));
+    img.classList.add("selected");
+    selectedImage = img;
+  }
 
-  const div = document.createElement("div");
-  div.className = "overlay-text";
-  div.textContent = selectedPreText;
-  div.style.color = textColor;
-  div.style.fontFamily = fontSelect;
-  div.style.top = "50px";
-  div.style.left = "50px";
-  div.style.position = "absolute";
-  div.ondblclick = () => div.remove();
-  makeDraggable(div);
-  stripContainer.appendChild(div);
-}
-    function addSticker(emoji) {
-      const span = document.createElement("div");
-      span.className = "sticker";
-      span.textContent = emoji;
-      span.style.top = "100px";
-      span.style.left = "100px";
-      span.style.position = "absolute";
-      span.ondblclick = () => span.remove();
-      makeDraggable(span);
-      stripContainer.appendChild(span);
+  const frameStyles = ["normal", "dashed", "dotted", "shadow"];
+
+  frameStyles.forEach(style => {
+    const card = document.createElement("div");
+    card.className = "flashcard";
+    card.textContent = style;
+    card.onclick = () => {
+      if (!selectedImage) return;
+      document.querySelectorAll(".flashcard").forEach(c => c.classList.remove("selected"));
+      card.classList.add("selected");
+      selectedFrameStyle = style;
+      applyFrameStyle(style);
+    };
+    frameOptions.appendChild(card);
+  });
+
+  frameColorInput.addEventListener("input", () => {
+    if (selectedImage) applyFrameStyle(selectedFrameStyle);
+  });
+
+  function applyFrameStyle(style) {
+    if (!selectedImage) return;
+    const color = frameColorInput.value;
+    selectedImage.style.boxShadow = "none";
+    selectedImage.style.border = `4px ${style === "shadow" ? "solid" : style} ${color}`;
+    if (style === "shadow") {
+      selectedImage.style.boxShadow = `0 0 15px ${color}`;
     }
+  }
 
-    function makeDraggable(el) {
-      let offsetX = 0;
-      let offsetY = 0;
-      el.onmousedown = function(e) {
-        offsetX = e.clientX - el.offsetLeft;
-        offsetY = e.clientY - el.offsetTop;
-        document.onmousemove = function(e) {
-          el.style.left = `${e.clientX - offsetX}px`;
-          el.style.top = `${e.clientY - offsetY}px`;
-        };
-        document.onmouseup = function() {
-          document.onmousemove = null;
-          document.onmouseup = null;
-        };
-      };
-    }
+  function toggleEditPanel() {
+    editControls.classList.toggle("show");
+  }
 
-    function downloadStrip() {
-      html2canvas(stripContainer).then(canvas => {
-        const link = document.createElement("a");
-        link.download = "photostrip.png";
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-      });
-    }
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  function toggleSection(id) {
+    document.querySelectorAll(".edit-section").forEach(section => {
+      section.classList.remove("show");
+    });
+    const selected = document.getElementById(id);
+    selected.classList.add("show");
+  }
+
+  function toggleLayout() {
+    stripContainer.classList.toggle("horizontal");
+  }
+
+  function changeBackground(color) {
+    stripContainer.style.backgroundColor = color;
+  }
+
+  document.querySelectorAll('#preTextOptions .flashcard').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('#preTextOptions .flashcard').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      selectedPreText = card.textContent;
+    });
+  });
+
+  function addText() {
+    const textColor = document.getElementById("textColor").value;
+    const fontSelect = document.getElementById("fontSelect").value;
+
+    const div = document.createElement("div");
+    div.className = "overlay-text";
+    div.textContent = selectedPreText;
+    div.style.color = textColor;
+    div.style.fontFamily = fontSelect;
+    div.style.top = "50px";
+    div.style.left = "50px";
+    div.style.position = "absolute";
+    div.ondblclick = () => div.remove();
+    makeDraggable(div);
+    stripContainer.appendChild(div);
+  }
+
+  function addSticker(emoji) {
+    const span = document.createElement("div");
+    span.className = "sticker";
+    span.textContent = emoji;
+    span.style.top = "100px";
+    span.style.left = "100px";
+    span.style.position = "absolute";
+    span.ondblclick = () => span.remove();
+    makeDraggable(span);
+    stripContainer.appendChild(span);
+  }
+
+  function makeDraggable(el) {
+    let offsetX = 0, offsetY = 0;
+
+    const startDrag = (x, y) => {
+      offsetX = x - el.offsetLeft;
+      offsetY = y - el.offsetTop;
+      document.addEventListener(moveEvent, onMove);
+      document.addEventListener(endEvent, onEnd);
+    };
+
+    const onMove = e => {
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      el.style.left = `${clientX - offsetX}px`;
+      el.style.top = `${clientY - offsetY}px`;
+    };
+
+    const onEnd = () => {
+      document.removeEventListener(moveEvent, onMove);
+      document.removeEventListener(endEvent, onEnd);
+    };
+
+    const downEvent = 'ontouchstart' in window ? 'touchstart' : 'mousedown';
+    const moveEvent = 'ontouchmove' in window ? 'touchmove' : 'mousemove';
+    const endEvent = 'ontouchend' in window ? 'touchend' : 'mouseup';
+
+    el.addEventListener(downEvent, e => {
+      e.preventDefault();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      startDrag(clientX, clientY);
+    });
+  }
+
+  function downloadStrip() {
+    html2canvas(stripContainer).then(canvas => {
+      const link = document.createElement("a");
+      link.download = "photostrip.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    });
+  }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
 </html>
