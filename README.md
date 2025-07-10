@@ -28,6 +28,6 @@
 ---
 ## 🚀 Live Demo
 
-> 🌐@[momoir Live Site](https://kasanjx.github.io/momoir/)
+> 🌐[@](https://kasanjx.github.io/momoir/)
 
 ---
