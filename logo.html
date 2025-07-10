@@ -1,0 +1,37 @@
+<div class="logo-bar">
+  <a href="main.html" class="logo-text">momoir</a>
+</div>
+
+<style>
+  .logo-bar {
+    position: fixed;
+    top: 20px;
+    left: 30px;
+    z-index: 9999;
+  }
+
+  .logo-text {
+    color: #ff007f;
+    font-weight: bold;
+    font-family: 'Pacifico', cursive;
+    font-size: 30px;
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    animation: bounce 2s infinite;
+  }
+
+  .logo-text:hover {
+    text-shadow:
+      -1px -1px 0 #ffffff,
+       1px -1px 0 #ffffff,
+      -1px  1px 0 #ffffff,
+       1px  1px 0 #ffffff;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+</style>

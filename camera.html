@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Photobooth | Capture</title>
+  <style>
+    body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #391125 0%, #000000 80%);
+    color: white;
+    text-align: center;
+    position: relative;
+  }
+  .main-layout 
+  { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 30px;
+  }
+  .camera-preview video 
+  {
+    width: 480px;
+    height: 360px;
+    border: 3px solid #fff;
+    border-radius: 12px;
+    object-fit: cover;
+    transition: all 0.5s ease;
+  }
+  .camera-preview.enlarged video 
+  { width: 640px;
+    height: 480px;
+  }
+  .control-panel 
+  {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+  }
+  .filter-flashcards 
+  {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .control-panel h2 
+  {
+    margin-bottom: 10px;
+  }
+  label
+  {
+    font-size: 16px;
+  }
+  select, button 
+  {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 16px;
+  }
+  .filter-btn 
+  {
+    padding: 10px 16px;
+    background: #222;
+    color: white;
+    border: 2px solid #555;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .filter-btn:hover
+  {
+    color: #ff007f;
+    border-color: #ff007f;
+  }
+  .filter-btn.active 
+  {
+    background-color: #ff007f;
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+  .toggle-btn 
+  {
+    padding: 10px 16px;
+    background-color: #222;
+    color: white;
+    border: 2px solid #555;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .toggle-btn.active{
+    background-color: #ff007f;
+    color: white;
+    border: 2px solid white;
+  }
+  .toggle-btn.active:hover
+  {
+    background-color: #e6e5e5;
+    color: #ff007f;
+    border:1px solid #ff007f;
+  }
+  button
+  {
+    padding: 14px 28px;
+    font-size: 17px;
+    border:2px solid #e6e5e5;
+    border-radius: 50px;
+    background-color: #ff007f;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  button:hover 
+  {
+    background-color: #e6e5e5;
+    color: #ff007f;
+    border:1px solid #ff007f;
+  }
+  
+.camera-preview 
+{
+  position: relative;
+}
+#overlay 
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  border-radius: 12px;
+}
+.camera-preview.enlarged #overlay 
+{
+  width: 640px;
+  height: 480px;
+}
+#overlay.show{opacity: 1;}
+h2{
+  color: #ff007f;
+  font-size: 30px;
+  text-shadow:
+    -2px -2px 0 #57042d,
+     2px -2px 0 #57042d,
+    -2px  2px 0 #57042d,
+     2px  2px 0 #57042d;
+}
+h2:hover{
+  text-shadow: 
+    -2px -2px 0 #060505,
+     2px -2px 0 #7d626f,
+    -2px  2px 0 #b19da7,
+     2px  2px 0 #dc1176;;
+}
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="main-layout">
+    <div class="camera-preview" id="previewContainer">
+      <video id="video" autoplay></video>
+      <div id="overlay"></div>
+    </div>
+    <div class="control-panel">
+      <h2>wall of choices:</h2>
+      <div id="filterButtons" class="filter-flashcards">
+        <button class="filter-btn active" data-filter="none">Normal</button>
+        <button class="filter-btn" data-filter="grayscale(1)">Grayscale</button>
+        <button class="filter-btn" data-filter="contrast(1.2) saturate(1.3) hue-rotate(330deg)">Dreamy Pink</button>
+        <button class="filter-btn" data-filter="sepia(0.3) contrast(1.1) brightness(1.1)">Polaroid</button>
+        <button class="filter-btn" data-filter="sepia(1)">Sepia</button>
+        <button class="filter-btn" data-filter="blur(2px)">Blur</button>
+        <button class="filter-btn" data-filter="contrast(0.9) saturate(0.7) brightness(0.95)">Flim</button>
+
+      </div>
+      <button id="mirrorBtn" class="toggle-btn">Mirror: OFF</button>
+      <button id="readyBtn">Ready!</button>
+    </div>
+  </div>
+  <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+  <script>
+
+    fetch("logo.html")
+    .then(res => res.text())
+    .then(data => {
+      const logoWrapper = document.createElement("div");
+      logoWrapper.innerHTML = data;
+      document.body.appendChild(logoWrapper);
+    });
+    
+    const video = document.getElementById("video");
+    const previewContainer = document.getElementById("previewContainer");
+    const overlay = document.getElementById("overlay");
+    const readyBtn = document.getElementById("readyBtn");
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const mirrorBtn = document.getElementById("mirrorBtn");
+
+    let currentFilter = "none";
+    let isMirrored = false;
+    let capturedImages = [];
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        video.srcObject = stream;
+      })
+      .catch(err => alert("Camera access denied: " + err.message));
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentFilter = btn.dataset.filter;
+        video.style.filter = currentFilter;
+      });
+    });
+
+    mirrorBtn.addEventListener("click", () => {
+      isMirrored = !isMirrored;
+      mirrorBtn.textContent = `Mirror: ${isMirrored ? "ON" : "OFF"}`;
+      mirrorBtn.classList.toggle("active", isMirrored);
+      video.style.transform = isMirrored ? "scaleX(-1)" : "scaleX(1)";
+    });
+
+    readyBtn.addEventListener("click", () => {
+      previewContainer.classList.add("enlarged");
+      overlay.textContent = "Get Ready!";
+      overlay.classList.add("show");
+
+      setTimeout(() => runCountdown(3), 1000);
+    });
+
+    function runCountdown(times) {
+      let count = 3;
+      let captured = 0;
+      const interval = setInterval(() => {
+        if (count > 0) {
+          overlay.textContent = count;
+          count--;
+        } else {
+          overlay.textContent = "Smile!";
+          capturePhoto();
+          captured++;
+          if (captured >= times) {
+            clearInterval(interval);
+            setTimeout(() => {
+              overlay.classList.remove("show");
+              localStorage.setItem("photos", JSON.stringify(capturedImages));
+              window.location.href = "result.html";
+            }, 1000);
+          } else {
+            count = 3;
+          }
+        }
+      }, 1000);
+    }
+
+    function capturePhoto() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.save();
+      if (isMirrored) {
+        ctx.scale(-1, 1);
+        ctx.translate(-canvas.width, 0);
+      }
+      ctx.filter = currentFilter;
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      ctx.restore();
+      capturedImages.push(canvas.toDataURL("image/png"));
+    }
+  </script>
+</body>
+</html>
