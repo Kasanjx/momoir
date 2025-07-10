@@ -14,12 +14,13 @@
     color: #ff007f;
     font-weight: bold;
     font-family: 'Pacifico', cursive;
-    font-size: 30px;
+    font-size: clamp(20px, 5vw, 30px);
     text-decoration: none;
-    padding: 6px 16px;
+    padding: 8px 20px;
     border-radius: 20px;
     backdrop-filter: blur(5px);
     animation: bounce 2s infinite;
+    transition: text-shadow 0.3s ease, transform 0.3s ease;
   }
 
   .logo-text:hover {
@@ -28,6 +29,7 @@
        1px -1px 0 #ffffff,
       -1px  1px 0 #ffffff,
        1px  1px 0 #ffffff;
+    transform: scale(1.05);
   }
 
   @keyframes bounce {
