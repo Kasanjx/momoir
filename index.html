@@ -1,177 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>momoir | Create</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>momoir</title>
   <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: radial-gradient(circle at center, #1d1d1d 0%, #000000 80%);
-    color: white;
-    text-align: center;
-    position: relative;
-  }
-  .heading 
-  {
-    font-size: 35px;
-    color: white;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-  .head 
-  {
-  font-family: 'Pacifico', cursive;
-  color: #ff007f;
-  animation: bounce 2s infinite;
-  transition: color 0.3s ease;
-  font-size: 110px;
-  text-shadow:
-    -1px -1px 0 #ffffff,
-     1px -1px 0 #ffffff,
-    -1px  1px 0 #ffffff,
-     1px  1px 0 #ffffff;
-}
-.head:hover 
-{
-  text-shadow:
-    -2px -2px 0 #57042d,
-     2px -2px 0 #57042d,
-    -2px  2px 0 #57042d,
-     2px  2px 0 #57042d;
-}
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
 
-@keyframes bounce 
-{
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
-}
-.tagline 
-{
-  font-size: 25px;
-  color: #ffffff;
-  margin-bottom: 20px;
-  margin-top: 0;
-}  
-.vertical-animate {
-  display: inline-block;
-  height: 0.9em;
-  overflow: hidden;
-  vertical-align: bottom;
-}
-.vertical-animate ul {
-  padding: 0;
-  margin: 0;
-  animation: slideWords 6s ease-in-out infinite;
-  list-style: none;
-}
-.vertical-animate li 
-{
-  color: #ff007f;
-  height: 1em;
-  line-height: 1em;
-}   
-@keyframes slideWords 
-{  
-  0%, 20%   { transform: translateY(0); }
-  33%, 53%  { transform: translateY(-1em); }
-  66%, 86%  { transform: translateY(-2em); }
-  100%      { transform: translateY(0); }
-}
-.start-btn 
-{
-  padding: 14px 28px;
-  font-size: 17px;
-  font-weight: 550;
-  border:1px solid #e6e5e5;
-  border-radius: 50px;
-  background-color: #ff007f;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.start-btn:hover 
-{
-  background-color: #e6e5e5;
-  color: #ff007f;
-  border:1px solid #ff007f;
-}
-.pink
-{
-  color: #ff007f;
-  font-weight: 300;
-}
-.emoji 
-{
-  position: absolute;
-  font-size: 1rem;
-  animation: float 6s linear infinite;
-  opacity: 0.6;
-  pointer-events: none;
-}
-@keyframes float 
-{
-0%{
-  transform: translateY(100vh) rotate(0deg);
-  opacity: 0;}
-10% {opacity: 0.8;}
-100% {
-  transform: translateY(-10vh) rotate(360deg);
-  opacity: 0;}
-}
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    body {
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, #1d1d1d 0%, #000000 80%);
+      color: white;
+      text-align: center;
+      position: relative;
+      padding: 20px;
+    }
+
+    .head {
+      font-family: 'Pacifico', cursive;
+      color: #ff007f;
+      animation: bounce 2s infinite;
+      transition: color 0.3s ease;
+      font-size: clamp(50px, 10vw, 110px);
+      text-shadow:
+        -1px -1px 0 #ffffff,
+         1px -1px 0 #ffffff,
+        -1px  1px 0 #ffffff,
+         1px  1px 0 #ffffff;
+    }
+
+    .head:hover {
+      text-shadow:
+        -2px -2px 0 #57042d,
+         2px -2px 0 #57042d,
+        -2px  2px 0 #57042d,
+         2px  2px 0 #57042d;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    .heading {
+      font-size: clamp(18px, 4vw, 35px);
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      text-align: center;
+      margin: 10px 0 5px;
+    }
+
+    .vertical-animate {
+      display: inline-block;
+      height: 1.1em;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+
+    .vertical-animate ul {
+      padding: 0;
+      margin: 0;
+      animation: slideWords 6s ease-in-out infinite;
+      list-style: none;
+    }
+
+    .vertical-animate li {
+      color: #ff007f;
+      height: 1em;
+      line-height: 1em;
+    }
+
+    @keyframes slideWords {
+      0%, 20%   { transform: translateY(0); }
+      33%, 53%  { transform: translateY(-1em); }
+      66%, 86%  { transform: translateY(-2em); }
+      100%      { transform: translateY(0); }
+    }
+
+    .tagline {
+      font-size: clamp(16px, 3vw, 25px);
+      margin: 10px 0 20px;
+    }
+
+    .start-btn {
+      padding: 14px 28px;
+      font-size: 17px;
+      font-weight: 550;
+      border: 1px solid #e6e5e5;
+      border-radius: 50px;
+      background-color: #ff007f;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .start-btn:hover {
+      background-color: #e6e5e5;
+      color: #ff007f;
+      border: 1px solid #ff007f;
+    }
+
+    .pink {
+      color: #ff007f;
+      font-weight: 300;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 1rem;
+      animation: float 6s linear infinite;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 0.8; }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .start-btn {
+        font-size: 15px;
+        padding: 12px 22px;
+      }
+    }
+  </style>
+
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 
 <body>
-<h1 class="head">momoir</h1>
-<div class="heading">
-  your <span class="pink">one</span> stop to<span class="vertical-animate">
-    <ul>
-      <li>Create</li>
-      <li>Cherish</li>
-      <li>Relive</li>
-    </ul>
-  </span> your moments
-</div>
-<br>
-<p class="tagline">Click • Create • Cherish</p>
-<button class="start-btn" onclick="startBooth()">Capture now</button>
+  <h1 class="head">momoir</h1>
 
-<script>
+  <div class="heading">
+    your <span class="pink">one</span> stop to
+    <span class="vertical-animate">
+      <ul>
+        <li>Create</li>
+        <li>Cherish</li>
+        <li>Relive</li>
+      </ul>
+    </span>
+    your moments
+  </div>
 
-  fetch("logo.html")
-    .then(res => res.text())
-    .then(data => {
-      const logoWrapper = document.createElement("div");
-      logoWrapper.innerHTML = data;
-      document.body.appendChild(logoWrapper);
-    });
+  <p class="tagline">Click • Create • Cherish</p>
+  <button class="start-btn" onclick="startBooth()">Capture now</button>
 
-  function startBooth() {
-  navigator.mediaDevices.getUserMedia({ video: true })
-  .then(() => window.location.href = "camera.html")
-  .catch(err => alert("Please allow camera access to proceed."));
-}
-  const emojis = ['✨','🎉','❤️','🎈','🌸','🎀','🫧','🤩','😍','😎'];
-  for (let i = 0; i < 20; i++) {
-    const emoji = document.createElement("div");
-    emoji.classList.add("emoji");
-    emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-    emoji.style.left = Math.random() * 100 + "vw";
-    emoji.style.animationDuration = (4 + Math.random() * 4) + "s";
-    emoji.style.fontSize = (1.5 + Math.random() * 2) + "rem";
-    emoji.style.top = "-10vh";
-    document.body.appendChild(emoji);
-  }
+  <script>
+    fetch("logo.html")
+      .then(res => res.text())
+      .then(data => {
+        const logoWrapper = document.createElement("div");
+        logoWrapper.innerHTML = data;
+        document.body.appendChild(logoWrapper);
+      });
+
+    function startBooth() {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(() => window.location.href = "camera.html")
+        .catch(err => alert("Please allow camera access to proceed."));
+    }
+
+    const emojis = ['✨','🎉','❤️','🎈','🌸','🎀','🫧','🤩','😍','😎'];
+    for (let i = 0; i < 20; i++) {
+      const emoji = document.createElement("div");
+      emoji.classList.add("emoji");
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.animationDuration = (4 + Math.random() * 4) + "s";
+      emoji.style.fontSize = (1.5 + Math.random() * 2) + "rem";
+      emoji.style.top = "-10vh";
+      document.body.appendChild(emoji);
+    }
   </script>
-
 </body>
 </html>
